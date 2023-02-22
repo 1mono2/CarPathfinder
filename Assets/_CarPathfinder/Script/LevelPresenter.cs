@@ -11,12 +11,13 @@ public class LevelPresenter : SingletonMonoBehaviour<LevelPresenter>
     private LevelProgressStateReactiveProperty _levelProgressState;
     private Counter _goalCounter =  new(); 
     
-    [SerializeField] private int goalCount = 3;
+    [SerializeField] private int _goalCount = 3;
     
     public LevelProgressStateReactiveProperty LevelProgressState => _levelProgressState;
     public Counter GoalCounter => _goalCounter;
+    public int GoalCount => _goalCount;
     
-    private void Start()
+    private void Awake()
     {
         _levelProgressState = new LevelProgressStateReactiveProperty(StateType.StartView);
         _levelProgressState.AddTransition(StateType.StartView, StateType.Ingame, TriggerType.ToIngame);
@@ -26,7 +27,7 @@ public class LevelPresenter : SingletonMonoBehaviour<LevelPresenter>
         _levelProgressState.AddTransition(StateType.Fail, StateType.Result, TriggerType.ToResult);
         
         _goalCounter.Count
-            .Where(count => count >= goalCount)
+            .Where(count => count >= _goalCount)
             .Subscribe(_ => _levelProgressState.ExecuteTrigger(TriggerType.ToSuccess)).AddTo(this);
     }
     
@@ -35,5 +36,8 @@ public class LevelPresenter : SingletonMonoBehaviour<LevelPresenter>
         _levelProgressState.ExecuteTrigger(TriggerType.ToIngame);
     }
 
-    
+    private void OnDestroy()
+    {
+        _levelProgressState.Dispose();
+    }
 }

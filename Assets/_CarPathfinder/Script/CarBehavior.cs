@@ -13,9 +13,8 @@ public class CarBehavior : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _rigidbody.isKinematic = true;
         LevelPresenter.I.LevelProgressState
-            .Where(state => state == StateType.Ingame)
+            .Where(state => state != StateType.StartView)
             .Subscribe(_ => Move()).AddTo(this);
         
         this.OnTriggerEnter2DAsObservable()

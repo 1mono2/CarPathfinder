@@ -34,10 +34,9 @@ public class SplineController : MonoBehaviour
     {
         for (int i = 0; i < _joints.Count; i++)
         {
-            int point = i + 1;
-            _spline.InsertPointAt(point, _joints[i].transform.position);
-            _spline.SetHeight(point, _splineHeight);
-            _joints[i].ObserveEveryValueChanged(obj => obj.transform.position)
+            if(_joints[i] == null) continue;
+            var point = i; // iだとSubscribeの中で値が変わってしまうので、pointに代入しておく
+            _joints[point].ObserveEveryValueChanged(obj => obj.transform.position)
                 .Subscribe(position => _spline.SetPosition(point, position)).AddTo(this);
         }
     }

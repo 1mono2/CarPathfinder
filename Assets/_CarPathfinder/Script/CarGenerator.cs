@@ -17,12 +17,16 @@ public class CarGenerator : MonoBehaviour
     
     void Start()
     {
-        GenerateCar();
+        //GenerateCar();
 
         this.UpdateAsObservable()
             .Subscribe(_ =>
             {
-                if(_currentCar == null) return;
+                if (_currentCar == null)
+                {
+                    GenerateCar();
+                    return;
+                }
                 if (CheckDistanceOver(_distanceThreshold, _currentCar.transform.position, _startPoint.transform.position))
                 {
                     GenerateCar();
@@ -33,6 +37,8 @@ public class CarGenerator : MonoBehaviour
     private void GenerateCar()
     {
         _currentCar = Instantiate(_carPrefab, _startPoint.transform.position, Quaternion.identity);
+        var carRigidbody = _currentCar.GetComponent<Rigidbody2D>();
+        carRigidbody.bodyType = RigidbodyType2D.Dynamic;
     }
 
     private static bool CheckDistanceOver(float threshold, Vector3 position1, Vector3 position2)
