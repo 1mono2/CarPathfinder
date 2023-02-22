@@ -8,7 +8,7 @@ using UnityEngine.U2D;
 public class SplineController : MonoBehaviour
 {
     [SerializeField] private SpriteShapeController _spriteShapeController;
-    Spline _spline;
+    private Spline _spline;
     [SerializeField] private float _splineHeight;
     
     [SerializeField] private List<GameObject> _joints;
@@ -16,6 +16,22 @@ public class SplineController : MonoBehaviour
     private void Start()
     {
         _spline = _spriteShapeController.spline;
+        SetSplineHeight();
+        SetJoint();
+        
+    }
+
+    private void SetSplineHeight()
+    {
+        if(_spline == null) return;
+        for (int i = 0; i < _spline.GetPointCount(); i++)
+        {
+            _spline.SetHeight(i, _splineHeight);
+        }
+    }
+
+    private void SetJoint()
+    {
         for (int i = 0; i < _joints.Count; i++)
         {
             int point = i + 1;
@@ -23,11 +39,6 @@ public class SplineController : MonoBehaviour
             _spline.SetHeight(point, _splineHeight);
             _joints[i].ObserveEveryValueChanged(obj => obj.transform.position)
                 .Subscribe(position => _spline.SetPosition(point, position)).AddTo(this);
-        }
-
-        for (int i = 0; i < _spline.GetPointCount(); i++)
-        {
-            _spline.SetHeight(i, _splineHeight);
         }
     }
 }
