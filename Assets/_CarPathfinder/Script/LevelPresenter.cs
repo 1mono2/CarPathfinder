@@ -29,6 +29,7 @@ public class LevelPresenter : SingletonMonoBehaviour<LevelPresenter>
         _goalCounter.Count
             .Where(count => count >= _goalCount)
             .Subscribe(_ => _levelProgressState.ExecuteTrigger(TriggerType.ToSuccess)).AddTo(this);
+        
     }
     
     public void GameStart()
