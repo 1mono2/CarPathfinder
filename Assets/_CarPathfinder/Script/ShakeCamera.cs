@@ -1,18 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using UniRx;
 
 public class ShakeCamera : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Camera _camera;
+    
+    [SerializeField] float _duration = 0.5f;
+    [SerializeField] float _strength = 3f;
+    [SerializeField] int _vibrato = 15;
+    [SerializeField] float _randomness = 90;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
+        _camera = GetComponent<Camera>();
         
+        LevelPresenter.I.LevelProgressState
+            .Where(state => state == StateType.Success)
+            .Subscribe(_ => ShakeRotateCamera()).AddTo(this);
+    }
+    
+    [ContextMenu("ShakeRotateCamera")]
+    public void ShakeRotateCamera()
+    {
+        _camera.DOShakeRotation(_duration, _strength, _vibrato, _randomness);
     }
 }

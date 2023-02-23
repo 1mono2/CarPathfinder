@@ -8,8 +8,7 @@ using UniRx;
 public class Confetti : MonoBehaviour
 {
     [SerializeField] ParticleSystem _confetti;
-    [SerializeField] GameObject _goalPoint;
-    
+
     private void Start()
     {
         LevelPresenter.I.LevelProgressState
