@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-
+using UniRx.Triggers;
 
 public class Confetti : MonoBehaviour
 {
@@ -11,11 +11,11 @@ public class Confetti : MonoBehaviour
 
     private void Start()
     {
-        LevelPresenter.I.LevelProgressState
-            .Where(state => state == StateType.Success)
-            .Subscribe(_ =>
+        this.OnTriggerEnter2DAsObservable()
+            .Subscribe(collider2D =>
             {
-                _confetti.Play();
+                if (collider2D.gameObject.CompareTag("Car"))
+                    _confetti.Play();
             }).AddTo(this);
     }
 }

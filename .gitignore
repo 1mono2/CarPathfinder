@@ -71,7 +71,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.propertiess
 *.blob
-mono_crash*.json
+mono_crash*
 
 # Recording File
 *.mp4

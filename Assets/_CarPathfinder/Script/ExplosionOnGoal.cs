@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UniRx;
 
@@ -16,9 +17,15 @@ public class ExplosionOnGoal : MonoBehaviour
             .Where(state => state == StateType.Success)
             .Subscribe(_ =>
             {
-                AddExplosion2D();
-                
+                OnSuccess();
+
             }).AddTo(this);
+    }
+    
+    private async void OnSuccess()
+    {
+        await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
+        AddExplosion2D();
     }
 
     private void AddExplosion2D()
@@ -38,8 +45,6 @@ public class ExplosionOnGoal : MonoBehaviour
             }
             var rbInParent = collider2D1.GetComponentInParent<Rigidbody2D>();
             if (rbInParent == null) continue;
-            
-            Debug.Log(rbInParent.name);
             rbInParent.AddExplosionForce2D(explosionPosition, _power, _radius, _upwardsModifier);
             
             

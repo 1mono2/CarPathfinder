@@ -5,7 +5,7 @@ using UnityEngine;
 using UniRx;
 using UnityEngine.U2D;
 
-public class SplineController : MonoBehaviour
+public class SplineController : MonoBehaviour, IObstacle
 {
     [SerializeField] private SpriteShapeController _spriteShapeController;
     private Spline _spline;
@@ -36,7 +36,7 @@ public class SplineController : MonoBehaviour
         {
             if(_joints[i] == null) continue;
             var point = i; // iだとSubscribeの中で値が変わってしまうので、pointに代入しておく
-            _joints[point].ObserveEveryValueChanged(obj => obj.transform.position)
+            _joints[point].ObserveEveryValueChanged(obj => obj.transform.localPosition)
                 .Subscribe(position => _spline.SetPosition(point, position)).AddTo(this);
         }
     }

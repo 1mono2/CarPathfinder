@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using DG.Tweening;
 using UniRx;
@@ -20,7 +21,13 @@ public class ShakeCamera : MonoBehaviour
         
         LevelPresenter.I.LevelProgressState
             .Where(state => state == StateType.Success)
-            .Subscribe(_ => ShakeRotateCamera()).AddTo(this);
+            .Subscribe(_ => OnSuccess()).AddTo(this);
+    }
+    
+    private async void OnSuccess()
+    {
+        await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
+        ShakeRotateCamera();
     }
     
     [ContextMenu("ShakeRotateCamera")]

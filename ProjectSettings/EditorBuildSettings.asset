@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_CarPathfinder/Scenes/Scene1.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/_CarPathfinder/Scenes/Scene2.unity
+    guid: f6c706b05a5134c4a8429ef0a5f8b005
   m_configObjects: {}

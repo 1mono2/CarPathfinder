@@ -12,6 +12,7 @@ public class CarGenerator : MonoBehaviour
     [SerializeField] private GameObject _startPoint;
 
     [SerializeField] private float _distanceThreshold = 2f;
+    [SerializeField] private float _generateInterval = 1f;
     private CarBehavior _currentCar;
     
     
@@ -20,6 +21,7 @@ public class CarGenerator : MonoBehaviour
         //GenerateCar();
 
         this.UpdateAsObservable()
+            .ThrottleFirst(TimeSpan.FromSeconds(_generateInterval))
             .Subscribe(_ =>
             {
                 if (_currentCar == null)
