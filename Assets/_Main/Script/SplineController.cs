@@ -5,7 +5,7 @@ using UnityEngine;
 using UniRx;
 using UnityEngine.U2D;
 
-public class SplineController : MonoBehaviour, IObstacle
+public class SplineController : MonoBehaviour
 {
     [SerializeField] private SpriteShapeController _spriteShapeController;
     private Spline _spline;

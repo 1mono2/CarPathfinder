@@ -10,8 +10,6 @@ public class TimeScaleController: MonoBehaviour
     [SerializeField] private float _minTime = 0.1f;
     [SerializeField]private float _timeScaleOnSuccess = 0.7f;
     
-
-
     private void Start()
     {
         LevelPresenter.I.LevelProgressState

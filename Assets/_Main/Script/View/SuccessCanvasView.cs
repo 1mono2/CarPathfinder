@@ -30,13 +30,13 @@ public class SuccessCanvasView : MonoBehaviour
     private async void OnSuccess()
     {
         await UniTask.Delay(TimeSpan.FromSeconds(0.7f));
-                
-        _successText.transform.DOScale(_defaultScale, 0.5f).SetEase(Ease.OutBack);
-        _confetti.Play();
         foreach (var obj in _objects)
         {
             obj.gameObject.SetActive(true);
             obj.transform.DOScale(1, 0.5f).SetEase(Ease.OutBack);
         }
+        _successText.SetActive(true);
+        _successText.transform.DOScale(_defaultScale, 0.5f).SetEase(Ease.OutBack);
+        _confetti.Play();
     }
 }

@@ -11,11 +11,16 @@ using Cysharp.Threading.Tasks;
 public class CarBehavior : MonoBehaviour
 {
     [SerializeField] private float _speed = 1f;
+    
+    [SerializeField] private GameObject _body;
+    [SerializeField] private GameObject _wheel;
     [SerializeField] private Collider2D _bodyCollider;
+    [SerializeField] VisualEffect _gasEffect;
+    [SerializeField] ParticleSystem _explosionPrefab;
+    
+    
     private Rigidbody2D _rigidbody;
     private IDisposable _move;
-    [SerializeField] VisualEffect _gasEffect;
-    
     private bool _isGoal = false;
     public bool IsGoal => _isGoal;
     void Start()
@@ -32,15 +37,15 @@ public class CarBehavior : MonoBehaviour
                 LevelPresenter.I.GoalCounter.AddCount(1);
                 _isGoal = true;
             }).AddTo(this);
-        //
-        // _bodyCollider.OnCollisionEnter2DAsObservable()
-        //     .Subscribe(collision =>
-        //     {
-        //         if(collision.gameObject.TryGetComponent<IObstacle>(out var obstacle))
-        //         {
-        //             Crash();
-        //         }
-        //     }).AddTo(this);
+        
+        _bodyCollider.OnCollisionEnter2DAsObservable()
+            .Subscribe(collision =>
+            {
+                if(collision.gameObject.TryGetComponent<IObstacle>(out var obstacle))
+                {
+                    Crash();
+                }
+            }).AddTo(this);
         
         this.transform.ObserveEveryValueChanged(transform => transform.position)
             .Where(position => position.y < -20f)
@@ -63,14 +68,17 @@ public class CarBehavior : MonoBehaviour
         _gasEffect.Stop();
     }
     
+    [ContextMenu("Crash")]
     private async void Crash()
     {
+        var explosion = Instantiate(_explosionPrefab, this.transform.position, Quaternion.identity);
+        explosion.Play();
         _move?.Dispose();
         _gasEffect.Stop();
-        this.transform.DOScale(new Vector3(1.6f, 0, 0), 0.3f);
-        await UniTask.Delay(TimeSpan.FromSeconds(0.7f));
-        this.transform.DOScale(Vector3.zero, 0.5f);
-        Destroy(this.gameObject, 1f);
+        await UniTask.Delay(TimeSpan.FromSeconds(0.5f), cancellationToken:this.GetCancellationTokenOnDestroy());
+        await this.transform.DOScale(Vector3.zero, 0.5f).ToUniTask(cancellationToken:this.GetCancellationTokenOnDestroy());
+        if(this != null)
+            Destroy(this.gameObject);
     }
 
     private void OnDestroy()
