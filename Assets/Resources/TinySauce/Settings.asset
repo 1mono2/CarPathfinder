@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa11ec82e9746928e211e7f096812ca, type: 3}
+  m_Name: Settings
+  m_EditorClassIdentifier: 
+  gameAnalyticsIosGameKey: 
+  gameAnalyticsIosSecretKey: 
+  gameAnalyticsAndroidGameKey: 8111f098d7e3e2259b66d24ee0aeaeab
+  gameAnalyticsAndroidSecretKey: df309732d02fb30308e56419d509682ff62a9d45
+  facebookAppId: 534664731982666
+  facebookClientToken: 975f2241f37b707fd68a60189bf36362
+  adjustIOSToken: 
+  adjustAndroidToken: habfrakmrabk
+  EditorIdfa: 52cf842a-7d09-4df1-b30d-d14aaa010b38
+  UseRemoteConfig: 0
+  UseVoodooAnalytics: 1
+  companyName: MoNo Production
+  privacyPolicyURL: https://1mono2.notion.site/Privacy-Policy-86fea46566724500a42aaf32bc921d91
+  developerContactEmail: 0618mono@gmail.com

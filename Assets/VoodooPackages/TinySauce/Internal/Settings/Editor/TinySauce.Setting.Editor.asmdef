@@ -1,0 +1,25 @@
+{
+    "name": "TinySauce.Setting.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ad54b656b863347869ee02b4804f2225",
+        "GUID:3eca0acf8098549569fe601179869d49",
+        "GUID:1be10fe372c14f94b1552dd00664aee9",
+        "GUID:054161b82cc974d1ca66ec6f493ba264",
+        "GUID:9f041192700a942b09c572524e631455",
+        "GUID:dbbc3ae300d0a498898d3ca617160293",
+        "GUID:7c8d05b729dba4af78e0e202133988fc",
+        "GUID:f1a3467e25344f58b8c33bffff040438"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

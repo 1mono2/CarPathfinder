@@ -1,0 +1,19 @@
+{
+    "name": "TinySauce.GameAnalytics.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ad54b656b863347869ee02b4804f2225",
+        "GUID:cfc17a000bcc447ad95e9efadecc562b"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

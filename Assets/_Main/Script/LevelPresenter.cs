@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+
 using UniRx;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -33,6 +30,22 @@ public class LevelPresenter : SingletonMonoBehaviour<LevelPresenter>
             .Where(count => count >= _goalCount)
             .Subscribe(_ => _levelProgressState.ExecuteTrigger(TriggerType.ToSuccess)).AddTo(this);
         
+        
+        TinySauce.OnGameStarted($"Scene {SceneManager.GetActiveScene().buildIndex}");
+        _levelProgressState.Where(state => state == StateType.Success)
+            .Subscribe(_ =>
+            {
+                TinySauce.OnGameFinished(true, _goalCounter.GetCount(),
+                    $"Scene {SceneManager.GetActiveScene().buildIndex}");
+
+            });
+        _levelProgressState.Where(state => state == StateType.Fail)
+            .Subscribe(_ =>
+            {
+                TinySauce.OnGameFinished(false, _goalCounter.GetCount(),
+                    $"Scene {SceneManager.GetActiveScene().buildIndex}");
+            });
+
     }
     
     public void GameStart()
@@ -43,7 +56,7 @@ public class LevelPresenter : SingletonMonoBehaviour<LevelPresenter>
     public void BackScene()
     {
         int prevScene;
-        if (0 > SceneManager.GetActiveScene().buildIndex - 1)
+        if (1 > SceneManager.GetActiveScene().buildIndex - 1)
         {
             prevScene = SceneManager.sceneCountInBuildSettings - 1; // last one
         }
@@ -69,7 +82,7 @@ public class LevelPresenter : SingletonMonoBehaviour<LevelPresenter>
         }
         else
         {
-            nextScene = 0;
+            nextScene = 1;
         }
         SceneManager.LoadScene(nextScene);
     }
