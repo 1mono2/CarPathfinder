@@ -275,7 +275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &872147367
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -446,7 +446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 935165761, guid: e2e2e70168af04ce39808d13f1be369e, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1505201006449764598, guid: e2e2e70168af04ce39808d13f1be369e,
         type: 3}
@@ -523,6 +523,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: basic car red Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2501984406506920677, guid: e2e2e70168af04ce39808d13f1be369e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 506755795, guid: e2e2e70168af04ce39808d13f1be369e, type: 3}
     m_RemovedGameObjects: []
@@ -547,7 +552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1163103933
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -652,7 +657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1332360589
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -869,6 +874,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Joint
+      objectReference: {fileID: 0}
+    - target: {fileID: 6027349154406131329, guid: 9b3db605626de43ada9cfb6e8d491cf2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6027349154406131341, guid: 9b3db605626de43ada9cfb6e8d491cf2,
         type: 3}

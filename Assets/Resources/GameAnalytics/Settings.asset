@@ -26,21 +26,21 @@ MonoBehaviour:
   UserMessagesFailed: 0
   CustomArea: 
   gameKey:
-  - 343a7728fc64d6794c0a868dc62ee4c4
+  - 8111f098d7e3e2259b66d24ee0aeaeab
   secretKey:
-  - 3cc85beff86a8cd9cb7e5b3366d9c55f9789ae33
+  - df309732d02fb30308e56419d509682ff62a9d45
   Build:
-  - 0.1
+  - 1.0
   SelectedPlatformOrganization:
-  - MoNo Production
+  - 
   SelectedPlatformStudio:
-  - MoNo Production
+  - 
   SelectedPlatformGame:
-  - Grasp the Road
-  SelectedPlatformGameID: 75ac0300
-  SelectedOrganization: 01000000
-  SelectedStudio: 01000000
-  SelectedGame: 04000000
+  - 
+  SelectedPlatformGameID: ffffffff
+  SelectedOrganization: 00000000
+  SelectedStudio: 00000000
+  SelectedGame: 00000000
   NewVersion: 7.3.24
   Changes: '7.3.24
 
@@ -50,10 +50,10 @@ MonoBehaviour:
   GameName: Grasp The Road
   OrganizationName: 
   OrganizationIdentifier: 
-  EmailGA: 0618mono@gmail.com
+  EmailGA: 
   IntroScreen: 0
-  InfoLogEditor: 1
-  InfoLogBuild: 1
+  InfoLogEditor: 0
+  InfoLogBuild: 0
   VerboseLogBuild: 0
   UseManualSessionHandling: 0
   SendExampleGameDataToMyGame: 0
@@ -63,13 +63,13 @@ MonoBehaviour:
   CustomDimensions03: []
   ResourceItemTypes: []
   ResourceCurrencies: []
-  LastCreatedGamePlatform: -1
+  LastCreatedGamePlatform: 0
   Platforms: 0b000000
-  CurrentInspectorState: 1
+  CurrentInspectorState: 0
   ClosedHints: 
   DisplayHints: 0
   DisplayHintsScrollState: {x: 0, y: 0}
-  Logo: {fileID: 2800000, guid: 98df8f9c5678a4e5d964caa1244e8958, type: 3}
+  Logo: {fileID: 0}
   UpdateIcon: {fileID: 0}
   InfoIcon: {fileID: 0}
   DeleteIcon: {fileID: 0}
